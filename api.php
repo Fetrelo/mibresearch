@@ -5,19 +5,6 @@
 	$filecount = 0;
 	$files = [];
 
-	$fila = 0;
-	$filaFeos = 0;
-	$listViajes = [];
-	$listViajesFeos = [];
-	$id = "";
-	$usuario= "";
-	$genero= "";
-	$edad= "";
-	$inicioViaje= "";
-	$finViaje= "";
-	$origenId= "";
-	$destinoId= "";
-
 	foreach (glob($filesDir."/*") as $file) {
 		$filecount++;
 		$files[$filecount] = $file;
@@ -29,7 +16,8 @@
 
 	switch ($case) {
 		case '#pr':
-			contestarLaPrimera($init, $finish);
+			$data = getMyData($files, $init, $finish);
+			contestarLaPrimera($data);
 			break;
 		case '#se':
 
@@ -54,6 +42,18 @@
 	//cargaMes($files[$month]);
 
 	function cargaMes($file) {
+		$lists = ["buenos" => [], "feos" => [] ];
+		$fila = 0;
+		$filaFeos = 0;
+		$id = "";
+		$usuario= "";
+		$genero= "";
+		$edad= "";
+		$inicioViaje= "";
+		$finViaje= "";
+		$origenId= "";
+		$destinoId= "";
+
 		if (($gestor = fopen("$file", "r")) !== FALSE) {
 			fgetcsv($gestor, 1000, ",");
 			while (($linea = fgetcsv($gestor, 1000, ",")) !== FALSE) {
@@ -116,15 +116,18 @@
 				}
 
 				if($flag) {
-					$listViajes[] =  new Viaje($id, $genero, $usuario, $edad, $inicioViaje, $finViaje, $origenId, $destinoId);
+					$lists["buenos"][] =  new Viaje($id, $genero, $usuario, $edad, $inicioViaje, $finViaje, $origenId, $destinoId);
+					//$lists["buenos"][] =  "$id,$genero,$usuario,$edad,$inicioViaje,$finViaje,$origenId,$destinoId";
 					$fila ++;
 				} else {
-					$listViajesFeos[] =  new Viaje($id, $genero, $usuario, $edad, $inicioViaje, $finViaje, $origenId, $destinoId);
+					$lists["feos"][] =  new Viaje($id, $genero, $usuario, $edad, $inicioViaje, $finViaje, $origenId, $destinoId);
+					//$lists["feos"][] =  "$id,$genero,$usuario,$edad,$inicioViaje,$finViaje,$origenId,$destinoId";
 					$filaFeos ++;
 				}
 			}
 			fclose($gestor);
 		}
+		return $lists;
 	}
 
 	function validacion ($dato) {
@@ -137,11 +140,20 @@
 		return $flag;
 	}
 
-	function contestarLaPrimera($start, $end) {
+	function getMyData($files, $start, $end) {
+		$result = [];
+		$aux = explode("-", $start);
+		$ms = (int)$aux[1];
+		$aux = explode("-", $end);
+		$mf = (int)$aux[1];
+		for(;$ms <= $mf; $ms++) {
+			$list[] = cargaMes($files[$ms]);
+		}
+		return $list;
+	}
+
+	function contestarLaPrimera($data) {
 		
-		
-		$result[] = $start;
-		$result[] = $end;
 		echo json_encode($result);
 	}
 	
