@@ -31,7 +31,7 @@
 	<div id="body">
 		<!--Navbar-->
 		<nav class="navbar navbar-expand-lg navbar-dark indigo">
-			
+
 		    <a class="navbar-brand" href="#">Mib Research Project</a>
 		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
 		        aria-expanded="false" aria-label="Toggle navigation">
@@ -40,9 +40,6 @@
 
 		    <div class="collapse navbar-collapse" id="basicExampleNav">
 		        <ul class="navbar-nav mr-auto">
-		            <li class="nav-item active">
-		                <a class="nav-link" href="#">Home</a>
-		            </li>
 		            <li class="nav-item">
 		                <a class="nav-link" href="#">Features</a>
 		            </li>
