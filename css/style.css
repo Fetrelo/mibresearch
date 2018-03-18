@@ -1,0 +1,11 @@
+div#presentation {
+	background: #03a9f4; /* Old Browsers */
+	background: -webkit-linear-gradient(bottom left,#03a9f4,#303f9f); /*Safari 5.1-6*/
+	background: -o-linear-gradient(bottom left,#03a9f4,#303f9f); /*Opera 11.1-12*/
+	background: -moz-linear-gradient(bottom left,#03a9f4,#303f9f); /*Fx 3.6-15*/
+	background: linear-gradient(bottom left, #03a9f4, #303f9f); /*Standard*/
+}
+
+div#body {
+	display: none;
+}
