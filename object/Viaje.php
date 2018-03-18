@@ -10,6 +10,7 @@ class Viaje
 {
     private $id;
     private $usuario;
+    private $genero;
     private $edad;
     private $inicioViaje;
     private $finViaje;
@@ -20,22 +21,25 @@ class Viaje
      * Viaje constructor.
      * @param $id
      * @param $usuario
+     * @param $genero
      * @param $edad
      * @param $inicioViaje
      * @param $finViaje
      * @param $origenId
      * @param $destinoId
      */
-    public function __construct($id, $usuario, $edad, $inicioViaje, $finViaje, $origenId, $destinoId)
+    public function __construct($id, $usuario, $genero, $edad, $inicioViaje, $finViaje, $origenId, $destinoId)
     {
         $this->id = $id;
         $this->usuario = $usuario;
+        $this->genero = $genero;
         $this->edad = $edad;
         $this->inicioViaje = $inicioViaje;
         $this->finViaje = $finViaje;
         $this->origenId = $origenId;
         $this->destinoId = $destinoId;
     }
+
 
     /**
      * @return mixed
@@ -67,6 +71,22 @@ class Viaje
     public function setUsuario($usuario)
     {
         $this->usuario = $usuario;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGenero()
+    {
+        return $this->genero;
+    }
+
+    /**
+     * @param mixed $genero
+     */
+    public function setGenero($genero)
+    {
+        $this->genero = $genero;
     }
 
     /**
