@@ -1,49 +1,83 @@
 <?php
-
+	$d = 0;
 	require_once("/object/Viaje.php");
 	$fila = 1;
 	$listViajes = [];
 	$tag = false;
+	$id = "";
+	$usuario= "";
+	$genero= "";
+	$edad= "";
+	$inicioViaje= "";
+	$finViaje= "";
+	$origenId= "";
+	$destinoId= "";
 	if (($gestor = fopen("data/datos_abiertos_2017_01.csv", "r")) !== FALSE) {
 		while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
 				$numero = count($datos);
 				//echo "<p> $numero de campos en la línea $fila: <br /></p>\n";
 				$fila++;
 				$flag = true;
+				$id = "";
+				$usuario= "";
 				for ($c=0; $c < $numero; $c++) {
 						//echo $datos[$c] . "<br />\n";
 						switch ($c) {
 							case 0:
-							if(!validacion($datos[$c]))
-									$flag = false;
+							 $id = $datos[$c];
+							if(!validacion($datos[$c])){
+								$flag = false;
+							}		
+
 								break;
 							case 1:
-							if(!validacion($datos[$c]))
-									$flag = false;
+							$usuario = $datos[$c];
+							if(!validacion($datos[$c])){
+								
+								$flag = false;
+							}
 								break;
 							case 2:
-								if(!validacion($datos[$c]))
-									$flag = false;
+							$genero = $datos[$c];
+								if(!validacion($datos[$c])){
+								
+								$flag = false;
+							}
 								break;
 							case 3:
-							if(!validacion($datos[$c]))
-									$flag = false;
+							$edad = $datos[$c];
+							if(!validacion($datos[$c])){
+								
+								$flag = false;
+							}
 								break;
 							case 4:
-							if(!validacion($datos[$c]))
-									$flag = false;
+							$inicioViaje = $datos[$c];
+							if(!validacion($datos[$c])){
+								
+								$flag = false;
+							}
 								break;
 							case 5:
-							if(!validacion($datos[$c]))
-									$flag = false;
+							$finViaje = $datos[$c];
+							if(!validacion($datos[$c])){
+								
+								$flag = false;
+							}
 								break;
 							case 6:
-							if(!validacion($datos[$c]))
-									$flag = false;
+							$origenId = $datos[$c];
+							if(!validacion($datos[$c])){
+								
+								$flag = false;
+							}
 								break;
 							case 7:
-							if(!validacion($datos[$c]))
-									$flag = false;
+							$destinoId = $datos[$c];
+							if(!validacion($datos[$c])){
+								
+								$flag = false;
+							}
 								break;
 						}
 
@@ -53,10 +87,15 @@
 				}
 				if($flag)
 						{
-							$listViajes [] =  new Viaje($datos[0],$datos[1],$datos[2],$datos[3],$datos[4],$datos[5],$datos[6]);
+							$listViajes [] =  new Viaje($id, $usuario, $edad, $inicioViaje, $finViaje, $origenId, $destinoId);
 
-							echo "1" . $datos[0] . " 2" . $datos[1] . " 3" . $datos[2] . " 4" . $datos[3] . " 5" . $datos[4] . " 6" . $datos[5]. " 7" . $datos[6] . " 8". $datos[7] ;
+							echo "ID:  " . $listViajes[$d]->getId() . " usuario:  " . $listViajes[$d]->getUsuario() ;
+								
+
+							echo "<br>";
 						}
+
+						
 
 		}
 		fclose($gestor);
