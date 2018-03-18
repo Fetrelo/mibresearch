@@ -1,7 +1,7 @@
 <?php
 	
-	require_once("/object/Viaje.php");
-	$filesDir = "./data";
+	require_once("object/Viaje.php");
+	$filesDir = "./datav";
 	$filecount = 0;
 	$files = [];
 
@@ -153,8 +153,33 @@
 	}
 
 	function contestarLaPrimera($data) {
-		
-		echo json_encode($result);
+		$hashMapStations = [];
+		$hashMapHours = [];
+		foreach ($data as $mo => $months) {
+			foreach ($months["buenos"] as $reg) {
+				$origen = $reg->getOrigenId();
+				if($hashMapStations[$origen] == null)
+					$hashMapStations[$origen] = 0;
+				$hashMapStations[$origen] += 1;
+
+				$hour = $reg->getInicioViaje();
+				$aux = explode(" ", trim($hour));
+				$hour = $aux[1];
+				$aux = explode(":");
+				$hour = $aux[0].":00 - ".$aux[0].":59";
+				if($hashMapHours[$hour] == null)
+					$hashMapHours[$hour] = 0;
+				$hashMapHours[$hour] += 1;
+			}
+		}
+		// arsort($hashMapStations);
+		// arsort($hashMapHours);
+		// for($i = 0; $i < 10; $i++) {
+		// 	$result["stations"][] = $hashMapStations[$i];
+		// 	$result["hours"][] = $hashMapHours[$i];
+		// }
+
+		var_dump($hashMapStations);
 	}
 	
 ?>

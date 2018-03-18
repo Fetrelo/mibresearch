@@ -21,19 +21,33 @@ $(function() {
 		$.ajax({
 			url: './api.php',
 			type: 'post',
-			dataType: 'json',
+			dataType: 'text',
 			data: { 
 				start: $("#startDate").val(), 
 				end: $("#finishDate").val(), 
 				casa: casa
 			},
 			success: function (data) {
-				alert();
+				var ctx = $('#stations').getContext('2d');
+				var chart = new Chart(ctx, {
+				    // The type of chart we want to create
+				    type: 'line',
+
+				    // The data for our dataset
+				    data: {
+				        labels: ["January", "February", "March", "April", "May", "June", "July"],
+				        datasets: [{
+				            label: "Estación",
+				            backgroundColor: 'rgb(255, 99, 132)',
+				            borderColor: 'rgb(255, 99, 132)',
+				            data: [0, 10, 5, 2, 20, 30, 45],
+				        }]
+				    },
+
+				    // Configuration options go here
+				    options: {}
+				});
 				console.log(data);
-			},
-			error: function(e) {
-				alert("error");
-				console.log(e);
 			}
 		});
 	});
