@@ -1,7 +1,7 @@
 <?php
-	$d = 0;
+	
 	require_once("/object/Viaje.php");
-	$fila = 1;
+	$fila = 0;
 	$listViajes = [];
 	$tag = false;
 	$id = "";
@@ -13,10 +13,12 @@
 	$origenId= "";
 	$destinoId= "";
 	if (($gestor = fopen("data/datos_abiertos_2017_01.csv", "r")) !== FALSE) {
+		fgetcsv($gestor, 1000, ",");
 		while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
+				
 				$numero = count($datos);
 				//echo "<p> $numero de campos en la línea $fila: <br /></p>\n";
-				$fila++;
+				
 				$flag = true;
 				$id = "";
 				$usuario= "";
@@ -25,6 +27,7 @@
 						switch ($c) {
 							case 0:
 							 $id = $datos[$c];
+							
 							if(!validacion($datos[$c])){
 								$flag = false;
 							}		
@@ -32,6 +35,7 @@
 								break;
 							case 1:
 							$usuario = $datos[$c];
+								 
 							if(!validacion($datos[$c])){
 								
 								$flag = false;
@@ -60,15 +64,13 @@
 								break;
 							case 5:
 							$finViaje = $datos[$c];
-							if(!validacion($datos[$c])){
-								
+							if(!validacion($datos[$c])){					
 								$flag = false;
 							}
 								break;
 							case 6:
 							$origenId = $datos[$c];
-							if(!validacion($datos[$c])){
-								
+							if(!validacion($datos[$c])){		
 								$flag = false;
 							}
 								break;
@@ -85,19 +87,26 @@
 						
 
 				}
-				if($flag)
+
+				 
+				if($flag )
 						{
 							$listViajes [] =  new Viaje($id, $usuario, $edad, $inicioViaje, $finViaje, $origenId, $destinoId);
 
-							echo "ID:  " . $listViajes[$d]->getId() . " usuario:  " . $listViajes[$d]->getUsuario() ;
+							echo "ID:  " . $listViajes[$fila]->getId() . " usuario:  " . $listViajes[$fila]->getUsuario() ;
 								
 
 							echo "<br>";
+							$fila ++;
 						}
 
 						
+					
+
 
 		}
+
+		echo $fila;
 		fclose($gestor);
 	}
 
