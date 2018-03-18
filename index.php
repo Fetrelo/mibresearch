@@ -60,12 +60,12 @@
 		        </ul>
 		        <form class="form-inline">
 		            <div class="md-form mt-0">
-		                <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="Search">
+		                <input id="startDate" class="form-control mr-sm-2" type="date">
 		            </div>
 		            <div class="md-form mt-0">
-		                <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="Search">
+		                <input id="finishDate" class="form-control mr-sm-2" type="date">
 		            </div>
-		            <button type="button" class="btn btn-primary"><i class="fa fa-search pr-2" aria-hidden="true"></i>Consultar</button>
+		            <button id="search" type="button" class="btn btn-primary"><i class="fa fa-search pr-2" aria-hidden="true"></i>Consultar</button>
 		        </form>
 		    </div>
 		</nav>
