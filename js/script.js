@@ -17,7 +17,6 @@ $(function() {
 
 	$("#search").click(function() {
 		var casa = $("#search").val();
-		console.log(casa);
 		$.ajax({
 			url: './api.php',
 			type: 'post',
@@ -28,26 +27,43 @@ $(function() {
 				casa: casa
 			},
 			success: function (data) {
+				console.log(data);
+				stations = [];
+				hours = [];
+				for(var key in objects) {
+				    stations.push(objects[key]);
+				}
+				for(var key in objects) {
+				    hours.push(objects[key]);
+				}
 				var ctx = $('#stations').getContext('2d');
 				var chart = new Chart(ctx, {
-				    // The type of chart we want to create
 				    type: 'line',
-
-				    // The data for our dataset
 				    data: {
-				        labels: ["January", "February", "March", "April", "May", "June", "July"],
+				        labels: Object.keys(data['stations']),
 				        datasets: [{
 				            label: "Estación",
 				            backgroundColor: 'rgb(255, 99, 132)',
 				            borderColor: 'rgb(255, 99, 132)',
-				            data: [0, 10, 5, 2, 20, 30, 45],
+				            data: stations,
 				        }]
 				    },
-
-				    // Configuration options go here
 				    options: {}
 				});
-				console.log(data);
+				var ctx2 = $('#hours').getContext('2d');
+				var chart = new Chart(ctx2, {
+				    type: 'line',
+				    data: {
+				        labels: Object.keys(data['hours']),
+				        datasets: [{
+				            label: "Horas pico",
+				            backgroundColor: 'rgb(255, 99, 132)',
+				            borderColor: 'rgb(255, 99, 132)',
+				            data: hours,
+				        }]
+				    },
+				    options: {}
+				});
 			}
 		});
 	});

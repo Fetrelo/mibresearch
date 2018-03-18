@@ -74,6 +74,7 @@
 			<div id="pr" class="panel">
 				<h3 class="question">Resultados 1</h3>
 				<div id="stations"></div>
+				<div id="hours"></div>
 			</div>
 			<div id="se" class="panel">
 				<h3 class="question">Resultados 2</h3>

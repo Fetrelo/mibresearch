@@ -16,8 +16,10 @@
 
 	switch ($case) {
 		case '#pr':
-			$data = getMyData($files, $init, $finish);
-			contestarLaPrimera($data);
+			// $data = getMyData($files, $init, $finish);
+			// contestarLaPrimera($data);
+			$data = getArchivo();
+			echo $data;
 			break;
 		case '#se':
 
@@ -37,6 +39,31 @@
 		default:
 			# code...
 			break;
+	}
+
+	function getArchivo() {
+		$result = [];
+		$stations = [];
+		$hours = [];
+		if (($gestor = fopen("data_by_stations.csv", "r")) !== FALSE) {
+			fgetcsv($gestor, 1000, ",");
+			while (($linea = fgetcsv($gestor, 1000, ",")) !== FALSE) {
+				if($linea != ""){
+					$stations[$linea[0]] = $linea[1];
+				}				
+			}
+		}
+		if (($gestor = fopen("data_by_hours.csv", "r")) !== FALSE) {
+			fgetcsv($gestor, 1000, ",");
+			while (($linea = fgetcsv($gestor, 1000, ",")) !== FALSE) {
+				if($linea != ""){
+					$hours[$linea[0]] = $linea[1];
+				}				
+			}
+		}
+		$result["stations"] = $stations;
+		$result["hours"] = $hours;
+		return $result;
 	}
 
 	//cargaMes($files[$month]);
