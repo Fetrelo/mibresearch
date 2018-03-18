@@ -9,3 +9,11 @@ div#presentation {
 div#body {
 	display: none;
 }
+
+div.content {
+	padding: 2%;
+}
+
+div.panel {
+	display:none;
+}

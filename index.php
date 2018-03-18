@@ -40,41 +40,54 @@
 
 		    <div class="collapse navbar-collapse" id="basicExampleNav">
 		        <ul class="navbar-nav mr-auto">
-		            <li class="nav-item">
+		            <!-- <li class="nav-item">
 		                <a class="nav-link" href="#">Features</a>
 		            </li>
 		            <li class="nav-item">
 		                <a class="nav-link" href="#">Pricing</a>
-		            </li>
+		            </li> -->
 		            <li class="nav-item dropdown">
-		                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+		                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Consultas</a>
 		                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-		                    <a class="dropdown-item" href="#">Action</a>
-		                    <a class="dropdown-item" href="#">Another action</a>
-		                    <a class="dropdown-item" href="#">Something else here</a>
+		                    <a id="p" class="dropdown-item" href="#">Primera</a>
+		                    <a id="s" class="dropdown-item" href="#">Segunda</a>
+		                    <a id="t" class="dropdown-item" href="#">Tercera</a>
+		                    <a id="c" class="dropdown-item" href="#">Cuarta</a>
+		                    <a id="q" class="dropdown-item" href="#">Quinta</a>
+		                    <a id="b" class="dropdown-item" href="#">Bonus</a>
 		                </div>
 		            </li>
 		        </ul>
 		        <form class="form-inline">
 		            <div class="md-form mt-0">
-		                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+		                <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="Search">
 		            </div>
+		            <div class="md-form mt-0">
+		                <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="Search">
+		            </div>
+		            <button type="button" class="btn btn-primary"><i class="fa fa-search pr-2" aria-hidden="true"></i>Consultar</button>
 		        </form>
 		    </div>
 		</nav>
-		        
-		<div class="card m-5" style="width: 22rem;">
-			<div class="view overlay hm-white-slight">
-				<img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" class="img-fluid" alt="">
-				<a href="#">
-					<div class="mask"></div>
-				</a>
+		
+		<div class="content">
+			<div id="pr" class="panel">
+				<h3 class="question">Resultados 1</h3>
 			</div>
-
-			<div class="card-body">
-				<h4 class="card-title">Card title</h4>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Button</a>
+			<div id="se" class="panel">
+				<h3 class="question">Resultados 2</h3>
+			</div>
+			<div id="te" class="panel">
+				<h3 class="question">Resultados 3</h3>
+			</div>
+			<div id="cu" class="panel">
+				<h3 class="question">Resultados 4</h3>
+			</div>
+			<div id="qu" class="panel">
+				<h3 class="question">Resultados 5</h3>
+			</div>
+			<div id="bo" class="panel">
+				<h3 class="question">Resultados 6</h3>
 			</div>
 		</div>
 	</div>
